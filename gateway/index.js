@@ -27,7 +27,7 @@ app.get("/user/:action", async (req, res, next) => {
     message: "deneme"
   }
 
-  await clients.redis_client_2.xadd("kuyruk_1", "*", "data", JSON.stringify(body))
+  await clients.redis_client_2.sendCommand(['XADD', 'kuyruk_1', '*', 'data', JSON.stringify(body)]);
 
   // setTimeout(() => {
   //   clients.redis_client_1.publish(topic, `mesaj ${topic}`)
